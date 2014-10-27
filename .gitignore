@@ -30,5 +30,11 @@ config/secrets.yml
 *.bowerrc
 bower.json
 
+# oh apple, thanks alot
 .DS_Store
+
+# ruby version already specified in Gemfile
 .ruby-version
+
+# for dotenv gem
+.env*
