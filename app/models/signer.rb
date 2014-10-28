@@ -1,9 +1,9 @@
 require 'openssl'
 require 'base64'
 
-class AuthSign
+class Signer
 
-  def self.sign_data(details_to_sign='')
+  def self.sign(details_to_sign='')
     digest = OpenSSL::Digest.new('sha1')
     key    = ENV['AWS_SECRET']
     data   = details_to_sign

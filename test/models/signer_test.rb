@@ -5,7 +5,7 @@
 
 require "test_helper"
 
-describe AuthSign do
+describe Signer do
 
   let (:secret) { "random_test_secret" }
 
@@ -16,7 +16,7 @@ describe AuthSign do
   }
 
   it 'signs string with key' do
-    AuthSign.sign_data(to_sign).must_equal 'zEAswdrJ0mrRnwUR9znmuWTyqz4='
+    Signer.sign(to_sign).must_equal 'zEAswdrJ0mrRnwUR9znmuWTyqz4='
   end
 
 end
