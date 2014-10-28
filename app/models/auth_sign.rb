@@ -1,13 +1,15 @@
-# model
-# -*- encoding : utf-8 -*-
+require 'openssl'
+require 'base64'
 
 class AuthSign
-  require 'base64'
 
   def self.sign_data(details_to_sign='')
-    digest = OpenSSL::HMAC.digest('sha1', ENV['AWS_SECRET'], details_to_sign)
-    # CGI.escape(Base64.encode64("#{digest}").chomp)
-    Base64.encode64("#{digest}").chomp
+    digest = OpenSSL::Digest.new('sha1')
+    key    = ENV['AWS_SECRET']
+    data   = details_to_sign
+
+    hmac = OpenSSL::HMAC.digest(digest, key, data)
+    Base64.encode64(hmac).chomp
   end
 
 end

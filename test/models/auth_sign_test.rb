@@ -1,3 +1,4 @@
+# re: https://github.com/TTLabs/EvaporateJS/blob/master/example/signing_example.rb
 # secret = "random_test_secret"
 # data_to_sign = "joesoap"
 # returns 'zEAswdrJ0mrRnwUR9znmuWTyqz4='
