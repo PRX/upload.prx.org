@@ -1,4 +1,4 @@
 prx-upload
 ==========
 
-App to upload files
+App to sign requests for AWS (S3/Cloudfront) multipart uploads.
