@@ -1,4 +1,6 @@
-# Be sure to restart your server when you modify this file.
+Mime::Type.register 'application/hal+json', :hal
 
-# Add new mime types for use in respond_to blocks:
-# Mime::Type.register "text/richtext", :rtf
+# ActionController.add_renderer :hal do |js, options|
+#   self.content_type ||= Mime::HAL
+#   js.to_json
+# end

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'signature' => 'signatures#show'
   get 'demo' => 'demo#index'
 
-  root 'demo#index'
+  root 'home#entrypoint'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
