@@ -10,7 +10,9 @@
    var _e_ = new Evaporate({
       signerUrl: '/signature',
       aws_key: "<%= ENV['AWS_KEY'] %>",
-      bucket: "<%= ENV['AWS_BUCKET'] %>"
+      bucket: "<%= ENV['AWS_BUCKET'] %>",
+      cloudfront: <%= !!ENV['AWS_USE_CLOUDFRONT'] %>,
+      aws_url: "<%= ENV['AWS_URL'] || 'https://s3.amazonaws.com' %>"
    });
 
    $('#files').change(function(evt){
@@ -18,6 +20,7 @@
 
       for (var i = 0; i < files.length; i++){
 
+         console.log('START', new Date());
          _e_.add({
             name: 'test_' + Math.floor(1000000000*Math.random()),
             file: files[i],
@@ -32,6 +35,7 @@
             },
             complete: function(){
                console.log('complete................yay!');
+               console.log('END', new Date());
             },
             progress: function(progress){
                console.log('making progress: ' + progress);
