@@ -9,8 +9,8 @@
 
    var _e_ = new Evaporate({
       signerUrl: '/signature',
-      aws_key: "<%= ENV['AWS_KEY'] %>",
-      bucket: "<%= ENV['AWS_BUCKET'] %>",
+      aws_key: "<%= ENV['AWS_ACCESS_KEY_ID'] %>",
+      bucket: "<%= ENV['AWS_S3_BUCKET'] %>",
       cloudfront: <%= !!ENV['AWS_USE_CLOUDFRONT'] %>,
       aws_url: "<%= ENV['AWS_URL'] || 'https://s3.amazonaws.com' %>"
    });

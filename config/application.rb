@@ -30,8 +30,8 @@ module PrxUpload
         :address              => "smtp.gmail.com",
         :port                 => 587,
         :domain               => 'prx.org',
-        :user_name            => ENV['EMAIL_USERNAME'],
-        :password             => ENV['EMAIL_PASSWORD'],
+        :user_name            => ENV['SMTP_USERNAME'],
+        :password             => ENV['SMTP_PASSWORD'],
         :authentication       => 'plain',
         :enable_starttls_auto => true
     }

@@ -12,7 +12,7 @@ describe Signer do
   let (:to_sign) { "joesoap" }
 
   before {
-    ENV['AWS_SECRET'] = secret
+    ENV['AWS_SECRET_KEY'] = secret
   }
 
   it 'signs string with key' do
