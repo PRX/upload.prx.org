@@ -12,7 +12,7 @@ CMD ["/sbin/my_init"]
 # Expose Nginx HTTP service
 EXPOSE 80
 
-# 
+# Ensure the log directory exists
 RUN mkdir -p /var/log/eb
 
 # Enable Nginx and Passenger
