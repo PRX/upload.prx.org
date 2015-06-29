@@ -12,6 +12,9 @@ CMD ["/sbin/my_init"]
 # Expose Nginx HTTP service
 EXPOSE 80
 
+# 
+RUN mkdir -p /var/log/eb
+
 # Enable Nginx and Passenger
 RUN rm -f /etc/service/nginx/down
 
