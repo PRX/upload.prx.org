@@ -30,7 +30,7 @@ bower.json
 .DS_Store
 
 # ruby version already specified in Gemfile
-.ruby-version
+# .ruby-version
 
 # for dotenv gem
 .env*
