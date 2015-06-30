@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# Use Ruby 2.2.0 to match Docker environment
 ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
