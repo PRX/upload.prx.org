@@ -10,9 +10,9 @@
    var _e_ = new Evaporate({
       signerUrl: '/signature',
       aws_key: "<%= ENV['AWS_ACCESS_KEY_ID'] %>",
-      bucket: "<%= ENV['AWS_S3_BUCKET'] %>",
-      cloudfront: <%= !!ENV['AWS_USE_CLOUDFRONT'] %>,
-      aws_url: "<%= ENV['AWS_URL'] || 'https://s3.amazonaws.com' %>"
+      bucket: "<%= ENV['UPLOAD_S3_BUCKET'] %>",
+      cloudfront: <%= !!ENV['UPLOAD_USE_CLOUDFRONT'] %>,
+      aws_url: "<%= ENV['UPLOAD_S3_ENDPOINT_URL'] || 'https://s3.amazonaws.com' %>"
    });
 
    $('#files').change(function(evt){
