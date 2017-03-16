@@ -27,6 +27,6 @@ phases:
       - rm staging.json && mv staging2.json staging.json
       - zip $TEMPLATE_CONFIG_ARTIFACT staging.json
       - aws s3 cp $TEMPLATE_CONFIG_ARTIFACT s3://$TEMPLATE_CONFIG_BUCKET/
-  artifacts:
-    files:
-      - README.md
+ artifacts:
+   files:
+     - README.md
