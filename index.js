@@ -8,12 +8,12 @@ const key = process.env.ACCESS_KEY;
 
 exports.handler = (event, context, callback) => {
     try {
-        const toSign = event.queryStringParameters.to_sign;
-        if (!toSign) {
-            callback(null, {statusCode: 500, headers: {}, body: 'No signature!'});
+        if (!event.queryStringParameters || !event.queryStringParameters.to_sign) {
+            callback(null, { statusCode: 400, headers: {}, body: null });
         } else {
+            const toSign = event.queryStringParameters.to_sign;
             const signature = crypto.createHmac('sha1', key).update(toSign).digest('base64');
-            callback(null, {statusCode: 200, headers: {}, body: signature});
+            callback(null, { statusCode: 200, headers: {}, body: signature });
         }
     } catch (e) {
         callback(e);
