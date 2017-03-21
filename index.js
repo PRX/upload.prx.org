@@ -13,7 +13,13 @@ exports.handler = (event, context, callback) => {
         } else {
             const toSign = event.queryStringParameters.to_sign;
             const signature = crypto.createHmac('sha1', key).update(toSign).digest('base64');
-            callback(null, { statusCode: 200, headers: {}, body: signature });
+            callback(null, {
+              statusCode: 200,
+              headers: {
+                'Content-Type': 'text/plain'
+              },
+              body: signature
+            });
         }
     } catch (e) {
         callback(e);
