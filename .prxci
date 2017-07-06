@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "type": "AWS Lambda",
+    "commands": {
+        "test": [
+            "npm test"
+        ]
+    }
+}

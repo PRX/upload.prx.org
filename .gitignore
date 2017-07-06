@@ -31,3 +31,5 @@ bower.json
 
 # for dotenv gem
 .env*
+
+node_modules/

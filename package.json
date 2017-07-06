@@ -1,0 +1,27 @@
+{
+  "name": "upload.prx.org",
+  "version": "1.0.0",
+  "description": "This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in LastPass.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PRX/upload.prx.org.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PRX/upload.prx.org/issues"
+  },
+  "homepage": "https://github.com/PRX/upload.prx.org#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "dotenv": "^4.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
+  }
+}
