@@ -5,6 +5,8 @@ env:
     PRX_LAMBDA_CODE_CONTAINER_ARCHIVE_FILENAME: "build.zip"
     PRX_LAMBDA_CODE_CONFIG_PARAMETERS: "Foo,Bar"
     PRX_CI_PUBLISH: "true"
+  parameter-store:
+    ACCESS_KEY: "/prx/testing/upload.prx.org/access-key"
 phases:
   install:
     commands:
