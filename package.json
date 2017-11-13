@@ -4,7 +4,11 @@
   "description": "This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in LastPass.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/"
+    "test": "mocha test/",
+    "archive": "npm run build-sync && npm run build-prune && npm run build-zip",
+    "build-sync": "rsync -crl --delete --exclude-from .lambdaignore . build",
+    "build-prune": "cd build && npm prune --production > /dev/null",
+    "build-zip": "rm -f build.zip && cd build && zip -rq ../build.zip ."
   },
   "repository": {
     "type": "git",

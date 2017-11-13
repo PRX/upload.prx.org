@@ -1,0 +1,16 @@
+version: '2'
+services:
+  start:
+    build: .
+    image: uploadprxorg
+    command: start
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+  ci:
+    image: uploadprxorg
+    command: test
+    volumes:
+      - ./test:/app/test
+      - ./index.js:/app/index.js
