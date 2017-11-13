@@ -14,6 +14,8 @@ phases:
   build:
     commands:
       - "cd $(ls -d */|head -n 1)"
+      - "pwd"
+      - "ls"
       - "docker-compose -f docker-compose-ci.yml build"
       - "docker-compose -f docker-compose-ci.yml run ci test"
       - "docker-compose -f docker-compose-ci.yml run ci archive"
