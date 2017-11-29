@@ -13,6 +13,7 @@ services:
     command: test
     environment:
       - ACCESS_KEY
+      - PRX_LAMBDA_ARCHIVE_BUILD_PATH
     volumes:
       - ./test:/app/test
       - ./index.js:/app/index.js
