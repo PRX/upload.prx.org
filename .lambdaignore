@@ -11,3 +11,9 @@ test
 tmp
 *.log
 *.zip
+config
+docker-compose-ci.yml
+event.json
+node_modules
+package.json
+README.md
