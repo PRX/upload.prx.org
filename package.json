@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/",
-    "archive": "npm run build-sync",
-    "archive2": "npm run build-sync && npm run build-prune && npm run build-zip",
+    "build": "npm run build-sync && npm run build-prune && npm run build-zip",
     "build-sync": "rsync -crl --delete --exclude-from .lambdaignore . build",
     "build-prune": "cd build && npm prune --production > /dev/null",
-    "build-zip": "rm -f build.zip && cd build && zip -rq ../build.zip ."
+    "build-zip": "rm -f build.zip && cd build && zip -rq /.prxci/build.zip ."
   },
   "repository": {
     "type": "git",
