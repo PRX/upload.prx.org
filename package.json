@@ -8,7 +8,7 @@
     "build": "npm run build-sync && npm run build-prune && npm run build-zip",
     "build-sync": "rsync -crl --delete --exclude-from .lambdaignore . build",
     "build-prune": "cd build && npm prune --production > /dev/null",
-    "build-zip": "rm -f build.zip && cd build && mkdir -p /.prxci && zip -rq $PRX_LAMBDA_ARCHIVE_BUILD_PATH ."
+    "build-zip": "rm -f build.zip && cd build && mkdir -p /.prxci && zip -rq \"$PRX_LAMBDA_ARCHIVE_BUILD_PATH\" ."
   },
   "repository": {
     "type": "git",
