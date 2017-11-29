@@ -7,21 +7,21 @@ const crypto = require('crypto');
 const key = process.env.ACCESS_KEY;
 
 exports.handler = (event, context, callback) => {
-    try {
-        if (!event.queryStringParameters || !event.queryStringParameters.to_sign) {
-            callback(null, { statusCode: 400, headers: {}, body: null });
-        } else {
-            const toSign = event.queryStringParameters.to_sign;
-            const signature = crypto.createHmac('sha1', key).update(toSign).digest('base64');
-            callback(null, {
-              statusCode: 200,
-              headers: {
-                'Content-Type': 'text/plain'
-              },
-              body: signature
-            });
-        }
-    } catch (e) {
-        callback(e);
+  try {
+    if (!event.queryStringParameters || !event.queryStringParameters.to_sign) {
+      callback(null, { statusCode: 400, headers: {}, body: null });
+    } else {
+      const toSign = event.queryStringParameters.to_sign;
+      const signature = crypto.createHmac('sha1', key).update(toSign).digest('base64');
+      callback(null, {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: signature
+      });
     }
+  } catch (e) {
+    callback(e);
+  }
 };
