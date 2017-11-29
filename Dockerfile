@@ -12,4 +12,4 @@ CMD [ "test" ]
 ADD package.json .
 RUN npm install
 ADD . .
-# RUN npm run build
+RUN npm run build
