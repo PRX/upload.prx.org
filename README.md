@@ -2,6 +2,8 @@
 
 This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in LastPass.
 
+The `buildspec.yml` file included in the repo is intended to be used for PRX CI.
+
 The important parts of the API Gateway configuration, in addition to CORS, are:
 
 ### Method Request
