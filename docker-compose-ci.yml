@@ -1,0 +1,19 @@
+version: '2'
+services:
+  start:
+    build: .
+    image: uploadprxorg
+    command: start
+    volumes:
+      - .:/app
+    # env_file:
+    #   - .env
+  ci:
+    image: uploadprxorg
+    command: test
+    environment:
+      - ACCESS_KEY
+      - PRX_LAMBDA_ARCHIVE_BUILD_PATH
+    volumes:
+      - ./test:/app/test
+      - ./index.js:/app/index.js
