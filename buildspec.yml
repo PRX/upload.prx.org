@@ -6,6 +6,7 @@ env:
     PRX_CI_PUBLISH: "true"
   parameter-store:
     ACCESS_KEY: "/prx/testing/upload.prx.org/access-key"
+    
 phases:
   install:
     commands:
