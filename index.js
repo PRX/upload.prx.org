@@ -1,5 +1,3 @@
-'use strict';
-
 const crypto = require('crypto');
 
 // User ARN: arn:aws:iam::561178107736:user/prx-upload
