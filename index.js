@@ -60,6 +60,7 @@ exports.handler = (event, context, callback) => {
       });
     }
   } catch (e) {
+    console.error(e);
     callback(e);
   }
 };
