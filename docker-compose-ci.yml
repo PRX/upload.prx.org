@@ -13,6 +13,7 @@ services:
     command: test
     environment:
       - ACCESS_KEY
+      - AWS_REGION
       - PRX_LAMBDA_ARCHIVE_BUILD_PATH
     volumes:
       - ./test:/app/test
