@@ -4,6 +4,11 @@ const crypto = require('crypto');
 // Access Key ID: AKIAJZ5C7KQPL34SQ63Q
 const key = process.env.ACCESS_KEY;
 
+exports.currentDateStamp = function() {
+  const now = new Date();
+  return now.toISOString().replace(/\-/g, '').substring(0, 8);
+}
+
 function hmac(key, string, encoding) {
   return crypto
     .createHmac('sha256', key)
@@ -12,9 +17,7 @@ function hmac(key, string, encoding) {
 }
 
 function v4signature(toSign) {
-  const now = new Date();
-
-  const dateStamp = now.toISOString().replace(/\-/g, '').substring(0, 8);
+  const dateStamp = exports.currentDateStamp();
   const region = process.env.AWS_REGION;
   const service = 's3';
 
