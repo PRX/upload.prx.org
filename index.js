@@ -15,7 +15,7 @@ function v4signature(toSign) {
   const now = new Date();
 
   const dateStamp = now.toISOString().replace(/\-/g, '').substring(0, 8);
-  const region = process.env.AWS_REGION;
+  const region = process.env.AWS_REGION || 'us-east-1';
   const service = 's3';
 
   const dateKey = hmac('AWS4' + key, dateStamp);
