@@ -5,6 +5,8 @@ env:
     AWS_REGION: "us-east-1"
   parameter-store:
     ACCESS_KEY: "/prx/testing/upload.prx.org/access-key"
+    DOCKERHUB_USERNAME: "/prx/DOCKERHUB_USERNAME"
+    DOCKERHUB_PASSWORD: "/prx/DOCKERHUB_PASSWORD"
 phases:
   install:
     commands:
