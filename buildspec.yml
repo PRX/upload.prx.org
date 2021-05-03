@@ -1,8 +1,7 @@
 version: 0.2
 env:
   variables:
-    PRX_LAMBDA_CODE_S3_KEY: "lambda/PRX-upload.prx.org.zip"
-    PRX_LAMBDA_CODE_CONFIG_PARAMETERS: "UploadLambdaCodeS3ObjectVersion"
+    PRX_LAMBDA_CODE_CONFIG_PARAMETERS: "UploadLambdaCodeS3ObjectKey"
     AWS_REGION: "us-east-1"
   parameter-store:
     ACCESS_KEY: "/prx/testing/upload.prx.org/access-key"
