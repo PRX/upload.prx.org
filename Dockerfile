@@ -6,6 +6,8 @@ LABEL org.prx.lambda="true"
 WORKDIR /app
 EXPOSE 8080
 
+RUN yum install -y -q rsync && yum clean all && rm -rf /var/cache/yum
+
 ENTRYPOINT [ "npm", "run" ]
 CMD [ "test" ]
 
