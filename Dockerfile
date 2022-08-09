@@ -2,6 +2,7 @@ FROM lambci/lambda:build-nodejs12.x
 
 MAINTAINER PRX <sysadmin@prx.org>
 LABEL org.prx.lambda="true"
+LABEL org.prx.spire.publish.s3="LAMBDA_ZIP"
 
 WORKDIR /app
 EXPOSE 8080

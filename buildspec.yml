@@ -2,25 +2,28 @@ version: 0.2
 env:
   variables:
     PRX_LAMBDA_CODE_CONFIG_PARAMETERS: "UploadLambdaCodeS3ObjectKey"
-    AWS_REGION: "us-east-1"
+    PRX_SPIRE_S3_PKG_PARAMETERS: LAMBDA_ZIP=/prx/stag/Spire/S3_Signing_Service/pkg/s3-object-key
+    AWS_REGION: us-east-1
   parameter-store:
-    ACCESS_KEY: "/prx/testing/upload.prx.org/access-key"
-    DOCKERHUB_USERNAME: "/prx/DOCKERHUB_USERNAME"
-    DOCKERHUB_PASSWORD: "/prx/DOCKERHUB_PASSWORD"
+    ACCESS_KEY: /prx/testing/upload.prx.org/access-key
+    DOCKERHUB_USERNAME: /prx/DOCKERHUB_USERNAME
+    DOCKERHUB_PASSWORD: /prx/DOCKERHUB_PASSWORD
+  exported-variables:
+    - PRX_LAMBDA_CODE_CONFIG_PARAMETERS
+    - PRX_LAMBDA_CODE_CONFIG_VALUE
+    - PRX_SPIRE_S3_PKG_PARAMETERS
+    - LAMBDA_ZIP
 phases:
-  install:
-    commands:
-      - 'echo "Installing docker-compose..."'
-      - 'COMPOSE="https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" && curl -sL $COMPOSE -o /usr/local/bin/docker-compose'
-      - "chmod +x /usr/local/bin/docker-compose"
   pre_build:
     commands:
       - echo Logging in to Docker Hub...
       - echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
   build:
     commands:
-      - "docker-compose -f docker-compose-ci.yml build"
-      - "docker-compose -f docker-compose-ci.yml run ci test"
+      - docker-compose -f docker-compose-ci.yml build
+      - docker-compose -f docker-compose-ci.yml run ci test
   post_build:
     commands:
-      - 'curl -sO "https://raw.githubusercontent.com/PRX/Infrastructure/master/ci/utility/post_build.sh" && chmod +x post_build.sh && bash ./post_build.sh'
+      - curl -sO "https://raw.githubusercontent.com/PRX/Infrastructure/main/ci/utility/post_build.sh"
+      - chmod +x post_build.sh
+      - . ./post_build.sh
