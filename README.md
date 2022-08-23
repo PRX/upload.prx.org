@@ -34,3 +34,4 @@ The important parts of the API Gateway configuration, in addition to CORS, are:
 #set($inputRoot = $input.path('$'))
 ${inputRoot.signature}
 ```
+
