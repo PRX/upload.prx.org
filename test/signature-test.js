@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require("./support/test-helper");
 const sinon = require("sinon");
 const index = require("../index");
@@ -10,6 +11,7 @@ describe("signature", () => {
     const event = { queryStringParameters: { to_sign: "test" } };
     const context = null;
     const callback = (err, response) => {
+      // @ts-ignore
       expect(response.body).to.equal("TyhhPs0RA37JFn+0oWNdm25HgBc=");
     };
     handler(event, context, callback);
@@ -21,6 +23,7 @@ describe("signature", () => {
     };
     const context = null;
     const callback = (err, response) => {
+      // @ts-ignore
       expect(response.body).to.equal(
         "b4d7d82a0860eec70f549065e7052c7f19f58fa37dd0d4a74493497e4a678907"
       );
