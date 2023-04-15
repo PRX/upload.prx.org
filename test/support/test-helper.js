@@ -1,5 +1,6 @@
+const dotenv = require("dotenv");
 if (!process.env.ACCESS_KEY) {
-    require('dotenv').config({path: `${__dirname}/../../config/test.env`});
+  dotenv.config({ path: `${__dirname}/../../.env` });
 }
 
 global.expect = require('chai').expect;
