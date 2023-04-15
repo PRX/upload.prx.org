@@ -1,33 +1,33 @@
-const crypto = require('crypto');
+const crypto = require("crypto");
 
 // User ARN: arn:aws:iam::561178107736:user/prx-upload
 // Access Key ID: AKIAJZ5C7KQPL34SQ63Q
-const key = process.env.ACCESS_KEY;
+const accessKey = process.env.ACCESS_KEY;
 
-exports.currentDateStamp = function() {
+exports.currentDateStamp = () => {
   const now = new Date();
-  return now.toISOString().replace(/\-/g, '').substring(0, 8);
-}
+  return now.toISOString().replace(/-/g, "").substring(0, 8);
+};
 
 function hmac(key, string, encoding) {
   return crypto
-    .createHmac('sha256', key)
-    .update(string, 'utf8')
+    .createHmac("sha256", key)
+    .update(string, "utf8")
     .digest(encoding);
 }
 
 function v4signature(toSign) {
   const dateStamp = exports.currentDateStamp();
   const region = process.env.AWS_REGION;
-  const service = 's3';
+  const service = "s3";
 
-  const dateKey = hmac('AWS4' + key, dateStamp);
+  const dateKey = hmac(`AWS4${accessKey}`, dateStamp);
   const dateRegionKey = hmac(dateKey, region);
   const dateRegionServiceKey = hmac(dateRegionKey, service);
 
-  const signingKey = hmac(dateRegionServiceKey, 'aws4_request');
+  const signingKey = hmac(dateRegionServiceKey, "aws4_request");
 
-  var signature = hmac(signingKey, toSign, 'hex');
+  const signature = hmac(signingKey, toSign, "hex");
 
   return signature;
 }
@@ -48,18 +48,22 @@ exports.handler = (event, context, callback) => {
       } else {
         // Use v2 signing
         // https://docs.aws.amazon.com/general/latest/gr/signature-version-2.html
-        signature = crypto.createHmac('sha1', key).update(toSign).digest('base64');
+        signature = crypto
+          .createHmac("sha1", accessKey)
+          .update(toSign)
+          .digest("base64");
       }
 
       callback(null, {
         statusCode: 200,
         headers: {
-          'Content-Type': 'text/plain',
-          'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
-          'Access-Control-Allow-Methods': 'GET,OPTIONS',
-          'Access-Control-Allow-Origin': '*'
+          "Content-Type": "text/plain",
+          "Access-Control-Allow-Headers":
+            "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+          "Access-Control-Allow-Methods": "GET,OPTIONS",
+          "Access-Control-Allow-Origin": "*",
         },
-        body: signature
+        body: signature,
       });
     }
   } catch (e) {
