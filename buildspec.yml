@@ -1,7 +1,6 @@
 version: 0.2
 env:
   variables:
-    PRX_LAMBDA_CODE_CONFIG_PARAMETERS: "UploadLambdaCodeS3ObjectKey"
     PRX_SPIRE_S3_PKG_PARAMETERS: LAMBDA_ZIP=/prx/stag/Spire/S3_Signing_Service/pkg/s3-object-key
     AWS_REGION: us-east-1
   parameter-store:
@@ -9,8 +8,6 @@ env:
     DOCKERHUB_USERNAME: /prx/DOCKERHUB_USERNAME
     DOCKERHUB_PASSWORD: /prx/DOCKERHUB_PASSWORD
   exported-variables:
-    - PRX_LAMBDA_CODE_CONFIG_PARAMETERS
-    - PRX_LAMBDA_CODE_CONFIG_VALUE
     - PRX_SPIRE_S3_PKG_PARAMETERS
     - LAMBDA_ZIP
 phases:
