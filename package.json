@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in LastPass.",
   "main": "index.js",
+  "engines": {
+    "node": ">= 18.0.0"
+  },
   "scripts": {
     "test": "mocha test/",
     "build": "npm run build-sync && npm run build-prune && npm run build-zip",
@@ -26,6 +29,18 @@
     "dotenv": "^4.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "sinon": "^1.17.7"
+    "sinon": "^1.17.7",
+    "@types/node": "*",
+    "@types/mocha": "*",
+    "@types/sinon": "*",
+    "eslint": "*",
+    "eslint-config-airbnb-base": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-prettier": "*",
+    "jsdoc": "*",
+    "prettier": "*",
+    "typescript": "*",
+    "yarn": "*"
   }
 }
