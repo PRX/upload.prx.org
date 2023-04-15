@@ -24,9 +24,9 @@
     "url": "https://github.com/PRX/upload.prx.org/issues"
   },
   "homepage": "https://github.com/PRX/upload.prx.org#readme",
-  "dependencies": {
+  "devDependencies": {
     "chai": "^3.5.0",
-    "dotenv": "^4.0.0",
+    "dotenv": "*",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
