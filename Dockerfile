@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 LABEL maintainer="PRX <sysadmin@prx.org>"
 LABEL org.prx.spire.publish.s3="LAMBDA_ZIP"
@@ -18,10 +18,10 @@ RUN yarn install
 RUN mkdir --parents /test
 ADD test/ test/
 
-ADD ./index.js .
+ADD src/index.js .
 
-RUN npm run test
+RUN npm test
 
 # This zip file is what will be deployed to the Lambda function.
 # Add any necessary files to it.
-RUN zip --quiet --recurse-paths /.prxci/build.zip index.js
+RUN zip --quiet --recurse-paths /.prxci/build.zip .
