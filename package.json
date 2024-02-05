@@ -16,6 +16,7 @@
   "keywords": [],
   "author": "",
   "license": "AGPL-3.0",
+  "private": "true",
   "bugs": {
     "url": "https://github.com/PRX/upload.prx.org/issues"
   },
