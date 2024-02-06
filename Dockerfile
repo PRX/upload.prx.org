@@ -18,10 +18,11 @@ RUN yarn install
 RUN mkdir --parents /test
 ADD test/ test/
 
-ADD src/index.js .
+# Tests expect to find index.js in src/
+ADD src/index.js src/index.js
 
 RUN npm test
 
 # This zip file is what will be deployed to the Lambda function.
 # Add any necessary files to it.
-RUN zip --quiet --recurse-paths /.prxci/build.zip .
+RUN zip --quiet --junk-paths /.prxci/build.zip src/index.js package.json
