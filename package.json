@@ -4,6 +4,7 @@
   "description": "This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in LastPass.",
   "main": "index.js",
   "type": "module",
+  "packageManager": "yarn@3.6.4",
   "engines": {
     "node": ">= 20.0.0"
   },
@@ -17,7 +18,6 @@
   "keywords": [],
   "author": "",
   "license": "AGPL-3.0",
-  "private": "true",
   "bugs": {
     "url": "https://github.com/PRX/upload.prx.org/issues"
   },

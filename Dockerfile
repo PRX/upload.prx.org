@@ -12,6 +12,7 @@ RUN apk add zip
 
 RUN mkdir --parents /.prxci
 
+RUN corepack enable
 ADD ./package.json .
 RUN yarn install
 
