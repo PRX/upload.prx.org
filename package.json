@@ -1,11 +1,11 @@
 {
   "name": "upload.prx.org",
   "version": "1.0.0",
-  "description": "This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in LastPass.",
+  "description": "This service is built on Amazon's API Gateway and AWS Lambda. When deploying the Lambda function code, the secret key ID must be inserted for the service to work correctly. That key is kept in 1Password.",
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">= 22.0.0"
+    "node": ">= 24.0.0"
   },
   "scripts": {
     "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest"
