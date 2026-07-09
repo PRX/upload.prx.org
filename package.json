@@ -23,19 +23,14 @@
   },
   "homepage": "https://github.com/PRX/upload.prx.org#readme",
   "devDependencies": {
+    "@biomejs/biome": "*",
     "@jest/globals": "*",
+    "@types/aws-lambda": "8.10.161",
     "@types/jest": "*",
     "@types/node": "*",
     "dotenv": "*",
-    "eslint": "*",
-    "eslint-config-airbnb-base": "*",
-    "eslint-config-prettier": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-jest": "*",
-    "eslint-plugin-prettier": "*",
     "jest": "*",
     "jsdoc": "*",
-    "prettier": "*",
     "typescript": "*",
     "yarn": "*"
   }
