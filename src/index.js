@@ -1,3 +1,5 @@
+/** @import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from "aws-lambda" */
+
 import { createHmac } from "node:crypto";
 
 // User ARN: arn:aws:iam::561178107736:user/prx-upload
@@ -10,14 +12,27 @@ const currentDateStamp = () => {
   return now.toISOString().replace(/-/g, "").substring(0, 8);
 };
 
-function hmac(key, string, encoding) {
-  return createHmac("sha256", key).update(string, "utf8").digest(encoding);
+/**
+ * @param {Buffer | string} key
+ * @param {Buffer | string} string
+//  * @returns {Buffer}
+ */
+function hmac(key, string) {
+  return createHmac("sha256", key).update(string, "utf8").digest();
 }
 
+/**
+ * @param {string} toSign
+ * @returns {string}
+ */
 function v4signature(toSign) {
   const dateStamp = currentDateStamp();
   const region = process.env.AWS_REGION;
   const service = "s3";
+
+  if (!region) {
+    throw new Error("Region is required");
+  }
 
   const dateKey = hmac(`AWS4${accessKey}`, dateStamp);
   const dateRegionKey = hmac(dateKey, region);
@@ -25,15 +40,19 @@ function v4signature(toSign) {
 
   const signingKey = hmac(dateRegionServiceKey, "aws4_request");
 
-  const signature = hmac(signingKey, toSign, "hex");
+  const signature = hmac(signingKey, toSign).toString("hex");
 
   return signature;
 }
 
+/**
+ * @param {APIGatewayProxyEventV2} event
+ * @returns {Promise<APIGatewayProxyStructuredResultV2>}
+ */
 export const handler = async (event) => {
   try {
-    if (!event.queryStringParameters || !event.queryStringParameters.to_sign) {
-      return { statusCode: 400, headers: {}, body: null };
+    if (!event.queryStringParameters?.to_sign) {
+      return { statusCode: 400, headers: {}, body: undefined };
     }
     const toSign = event.queryStringParameters.to_sign;
 
@@ -44,6 +63,10 @@ export const handler = async (event) => {
       // https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
       signature = v4signature(toSign);
     } else {
+      if (!accessKey) {
+        throw new Error("Access key is required");
+      }
+
       // Use v2 signing
       // https://docs.aws.amazon.com/general/latest/gr/signature-version-2.html
       signature = createHmac("sha1", accessKey).update(toSign).digest("base64");
